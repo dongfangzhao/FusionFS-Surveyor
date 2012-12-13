@@ -1,12 +1,23 @@
-Author: dongfang.zhao@hawk.iit.edu
+Author: dongfang@ieee.org
 
 Update history:
+	12/12/2012: update the README file
 	09/15/2012: some ad-hoc changes to fusionFS for metadata benchmark for ZHT-IPDPS submission
 	09/08/2012: fusionFS running fine on a single work node on BluegeneP. IOZone result: read 48 MB/s, write 23 MB/s
 	08/30/2012: initial checked in, compiled and mounted succesfully; 'ls' is not functioning, nothing else is tested
 
+[updated on 12/12/12]
+Prerequisite to install FusionFS on Surveyor:
+1) Install libfuse in home directory, say ~/libfuse, then you need to either export the lib directory to LD_LIBRARY or update your .bashrc file
+2) Install Google Protocol Buffer of both C and C++ versions, say in ~/gbuf/ and ~/gbuf-c/, and again, load it in the environment variable $LD_LIBRARY_PATH
+3) Your ~/.bashrc should look something like this:
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/dzhao/libfuse/lib:/home/dzhao/fusionfs/ffsnet:/home/dzhao/fusionfs/src/udt4/src:/home/dzhao/gbuf/lib
+
+export PATH=$PATH:/home/dzhao/gbuf/bin:/home/dzhao/gbuf-c/bin
+4) Go to ./src/zht, adjust the makefile to fit your needs, and `make` it
+[end of updaet on 12/12/12]
+
 How to install fusionfs:
-	0) This needs to be updated for BGP.
 	1) Make sure all dependent libraries are specified, e.g. echo $LD_LIBRARY_PATH 
 		:/usr/local/lib:/home/dongfang/fusionFS/src/ffsnet/:/home/dongfang/fusionFS/src/udt4/src
 	2) Install FUSE 2.8 or later for your Linux distribution
